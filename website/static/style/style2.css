@@ -1,0 +1,679 @@
+
+@font-face {
+    font-family: 'Monserrat';
+    src: url(../fonts/Montserrat-Light.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Monserrat-Bold';
+    src: url(../fonts/Montserrat-Bold.ttf);
+    font-weight: 400;
+}
+
+body{
+    font-family: 'Monserrat';
+    font-weight: 400;
+
+  
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ 
+}
+
+header {
+    position: fixed; /* Фиксированное положение */
+   
+    width: 100%; /* Ширина на всю страницу */
+    background-color: #ffffff; /* Цвет фона */
+    padding: 10px 20px; /* Отступы */
+ 
+    z-index: 1000; /* Убедитесь, что шапка выше других элементов */
+}
+.container {
+    width: 1440px;
+    margin: 0 auto;
+    
+}
+h1, h2, h3, h4, h5 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 25px;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-lg-8, .col-lg-4, .col-md-6, .col-md-2, .col-md-4, .col-12 {
+    padding: 0 15px;
+}
+
+.col-lg-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+}
+
+.col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.col-md-2 {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+}
+
+.col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+.col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.cart-item-img {
+    max-height: 150px;
+    width: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.quantity-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+.btn-outline-secondary {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #555;
+}
+
+.btn-outline-secondary:hover {
+    background: #f0f0f0;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.btn-primary {
+    background:rgba(249, 91, 82, 1);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: rgb(218, 28, 18);
+}
+
+.text-muted {
+    color: #7f8c8d;
+}
+
+.text-end {
+    text-align: right;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.py-5 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.checkout-btn {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.list-group {
+    list-style: none;
+}
+
+.list-group-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-group-flush .list-group-item:last-child {
+    border-bottom: none;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+textarea.form-control {
+    min-height: 100px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 20px 0;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.g-3 {
+    gap: 1rem;
+}
+
+
+
+
+
+
+
+
+
+a{
+    color: #000000;
+    text-decoration: none;
+    }
+    
+    #a{
+        color: #ffffff;
+        background:rgba(249, 91, 82, 1);
+        width: 250px;
+    }
+  
+    
+    #loginBtn{
+        padding-top: 13px;
+     
+        border: 1px solid #fff;
+    border-radius: 10px;
+    width: 179px;
+    height: 37px;
+  
+    font-weight: 300;
+    font-size: 26px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #000000;
+    background-color: transparent;
+    cursor: pointer;
+    }
+    
+    #registerBtn{
+        margin-top: 10px;
+        border: 1px solid rgba(249, 91, 82, 1);
+    border-radius: 10px;
+    width: 252px;
+    height: 37px;
+    background: rgba(249, 91, 82, 1);
+    
+    font-weight: 300;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #ffffff;
+    cursor: pointer;
+    }
+    
+    
+    
+    
+    #b{
+        float: left;
+        font-size: 16px;
+        color:  rgba(249, 91, 82, 1);
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    #g{
+        color: rgba(249, 91, 82, 1) ;
+    }
+  
+    
+    .buttons{
+    
+    margin-top: 40px;
+        border: 1px solid #fff;
+       margin-left: 70px;
+       font-family: 'Monserrat-Bold';
+    font-weight: 400;
+    font-size: 24px;
+    
+    border-radius: 10px;
+    width: 198px;
+    height: 57px;
+    background:rgb(255, 255, 255);
+    }
+ 
+    
+    
+    #btn4{
+        width: 300px;
+    height: 57px;
+    }
+    #btn5{
+        
+        width: 400px;
+    height: 57px;
+    }
+ 
+    
+ 
+
+    
+    #open-cart-btn {
+        padding-top: 13px;
+     
+        border: 1px solid #fff;
+    border-radius: 10px;
+    width: 179px;
+    height: 37px;
+    font-family: var(--font-family);
+    
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #000000;
+    background-color: transparent;
+    cursor: pointer;
+    
+    }
+    
+   
+    
+    .cart-modal {
+        display: none; /* Скрыто по умолчанию */
+        position: fixed; /* Окно фиксировано */
+        z-index: 1; /* Сверху других элементов */
+        left: 0;
+        top: 0;
+        width: 100%; /* Полная ширина */
+        height: 100%; /* Полная высота */
+        overflow: auto; /* Включает прокрутку, если необходимо */
+        background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+    }
+    
+    .cart-modal-content {
+        background-color: #ffffff;
+        margin: 10% auto; /* Центрирование окна */
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        width: 500px; /* Ширина модального окна */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+    }
+    
+    .cart-close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .cart-close-btn:hover,
+    .cart-close-btn:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+
+    .product {
+        background-color: #fff;
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    .product h3 {
+        margin: 0;
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee; /* Разделитель между товарами */
+    }
+    
+    li:last-child {
+        border-bottom: none; /* Убираем разделитель у последнего товара */
+    }
+    
+    .cart-total {
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+    }
+    
+    #checkout-btn {
+        background-color: rgba(249, 91, 82, 1); /* Синяя кнопка */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+        width: 100%; /* Широкая кнопка */
+    }
+    
+    #checkout-btn:hover {
+        background-color: rgb(177, 59, 53); /* Темнее при наведении */
+    }
+    
+    #clear-cart-btn{
+        background-color: rgba(249, 91, 82, 1); /* Синяя кнопка */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+        width: 100%; /* Широкая кнопка */
+    }
+    #clear-cart-btn:hover{
+        background-color: rgb(177, 59, 53);
+    }
+    /* Стили для кнопки "Убрать 1" */
+    .remove-button {
+        background-color: #ff4d4d; /* Красный цвет фона */
+        color: white; /* Белый цвет текста */
+        border: none; /* Убираем рамку */
+        border-radius: 5px; /* Закругленные углы */
+        padding: 5px 10px; /* Отступы внутри кнопки */
+        cursor: pointer; /* Курсор в виде руки при наведении */
+        transition: background-color 0.3s; /* Плавный переход для фона */
+        width:50px ;
+         width:100px ;
+        height: 30px;
+        margin-top: 100px;
+    
+    }
+    
+    .remove-button:hover {
+        background-color: #ff1a1a; /* Темнее при наведении */
+    }
+    
+    .remove-button:active {
+        background-color: #e60000; /* Еще темнее при нажатии */
+    }
+    
+    .dropdown {
+        position: relative; /* Для позиционирования выпадающего меню */
+        display: inline-block; /* Для отображения в строку */
+    }
+    
+    .dropdown-menu {
+        list-style-type: none; /* Убираем маркеры списка */
+        width:  200px;
+        background-color: #ffffff; /* Цвет фона */
+        border: 1px solid #ccc; /* Граница */
+        border-radius: 5px; /* Скругление углов */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень */
+        position: absolute; /* Позиционирование */
+       
+        display: none; /* Скрываем по умолчанию */
+    }
+    
+    
+    .profile{
+        margin-top: 10px;
+        border: 1px solid rgba(249, 91, 82, 1);
+    border-radius: 10px;
+    width: 200px;
+    height: 37px;
+    background: rgba(249, 91, 82, 1);
+    
+    font-weight: 300;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #ffffff;
+    cursor: pointer;
+    }
+    .dropdown:hover .dropdown-menu {
+        display: block; /* Показываем меню при наведении */
+    }
+    
+    .dropdown-menu li {
+        padding: 10px 15px; /* Внутренние отступы для элементов списка */
+    }
+    
+    .dropdown-menu li:hover {
+        background-color: #f0f0f0; /* Цвет при наведении */
+    }
+    
+    .dropdown-item {
+        text-decoration: none; /* Убираем подчеркивание */
+        color: #000000; /* Цвет текста */
+        display: block; 
+        font-size: 20px;/* Занимаем всю ширину */
+    }
+    .category-dropdown {
+        position: relative; /* Для правильного позиционирования выпадающего меню */
+        display: inline-block; /* Отображение в строку */
+    }
+    
+    .category-button {
+        margin-top: 40px;
+        border: 1px solid #fff;
+       margin-left: 70px;
+       font-family: 'Monserrat-Bold';
+    font-weight: 400;
+    font-size: 24px;
+    
+    border-radius: 10px;
+    width: 198px;
+    height: 57px;
+    background:rgb(255, 255, 255); 
+    }
+    
+    .category-list {
+        list-style-type: none; /* Убираем маркеры списка */
+        padding: 0; /* Убираем внутренние отступы */
+        margin: 0; /* Убираем внешние отступы */
+        background-color: #ffffff; /* Цвет фона списка */
+        border: 1px solid #ccc; /* Граница */
+        border-radius: 5px; /* Скругление углов */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень */
+        position: absolute; /* Позиционирование */
+        z-index: 1000; /* Уровень иерархии */
+        display: none; /* Скрываем по умолчанию */
+    }
+    
+    .category-dropdown:hover .category-list {
+        display: block; /* Показываем меню при наведении */
+    }
+    
+    .category-list li {
+        padding: 10px 15px; /* Внутренние отступы для элементов списка */
+    }
+    
+    .category-list li:hover {
+        background-color:rgba(249, 91, 82, 1);
+      
+    }
+    
+    .category-item {
+        text-decoration: none; /* Убираем подчеркивание */
+        color: #000000; /* Цвет текста */
+        display: block; /* Занимаем всю ширину */
+    }
+    .button{
+        float: right;
+        padding-top: 10px;
+    }
+    .search-form {
+        max-width: 400px;
+       
+      }
+      
+      .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        border-radius: 30px;
+        padding: 5px 15px;
+    
+    
+      }
+      
+    
+      .search-input {
+    
+        border-color:#ec6f6f;
+        background: transparent;
+        padding: 15px 40px;
+     
+        margin-bottom: 10px;
+        font-size: 16px;
+        outline: none;
+        color: #333;
+      }
+      
+      .search-input::placeholder {
+        color: #5a5a5a;
+      }
+      
+      .search-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        margin-left: 5px;
+    
+      }
+      
+     
+    

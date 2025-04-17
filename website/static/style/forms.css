@@ -1,0 +1,134 @@
+ body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .base {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+     
+        padding: 20px;
+    }
+
+    .base-content {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        padding: 40px;
+        text-align: center;
+    }
+
+    h3 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    hr.first {
+        border-top: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    .email, .password {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    h4 {
+        margin: 0 0 5px;
+        color: #555;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+        border-color:rgba(249, 91, 82, 1);
+        outline: none;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    a {
+        color: rgba(249, 91, 82, 1);
+        text-decoration: none;
+        margin-bottom: 10px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    input[type="submit"] {
+        background-color: rgba(249, 91, 82, 1);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: rgb(224, 41, 31);
+    }
+
+    .alert {
+        position: relative;
+        padding: 20px;
+        margin-bottom: 15px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 600px; /* Максимальная ширина для уведомления */
+        margin-left: auto;
+        margin-right: auto; /* Центрирование уведомления */
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert-success .btn-close {
+        position: absolute;
+        top: 10px;
+        right: 15px; /* Расположение кнопки закрытия */
+    }
+
+    .alert h4 {
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .btn-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        line-height: 1;
+        color: #155724;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
+
+    .btn-close:hover {
+        opacity: 1; /* Эффект наведения на кнопку закрытия */
+    }

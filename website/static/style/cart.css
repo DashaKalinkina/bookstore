@@ -1,0 +1,70 @@
+
+    body {
+        background-color: #f8f9fa; /* Светлый фон для контрастности */
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    h1 {
+        color: #343a40; /* Темный цвет для заголовков */
+        font-weight: bold;
+    }
+
+    .card {
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        background-color: white;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .img-thumbnail {
+        border: none; /* Убираем рамку у изображений */
+        border-radius: 8px; /* Закругляем углы изображений */
+    }
+
+    .btn {
+        border-radius: 50%; /* Кнопки с круглой формой */
+        padding: 10px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #007bff; /* Цвет кнопки при наведении */
+        color: white;
+    }
+
+    .remove-cart {
+        background-color: #dc3545; /* Цвет кнопки удаления */
+        color: white;
+        border: none;
+    }
+
+    .remove-cart:hover {
+        background-color: #c82333; /* Цвет кнопки удаления при наведении */
+    }
+
+    .list-group-item {
+        border: none; /* Убираем границу у элементов списка */
+        padding: 15px 20px; /* Отступы для элементов списка */
+    }
+
+    .list-group-item strong {
+        color: #343a40; /* Темный цвет для текста */
+    }
+
+    .d-grid {
+        margin-top: 20px; /* Отступ сверху для кнопки оформления заказа */
+    }
+
+    #amount_tt {
+        font-weight: bold; /* Выделяем итоговую сумму */
+        color: #007bff; /* Цвет для итоговой суммы */
+    }
