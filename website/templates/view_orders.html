@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management</title>
+    <style>
+        :root {
+            --primary-color: rgba(249, 91, 82, 1);
+            --dark-bg: rgba(249, 91, 82, 1);
+            --hover-bg: rgba(249, 91, 82, 1);
+            --text-light: #ecf0f1;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --border-color: #ddd;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .orders-container {
+            max-width: 100%;
+            overflow-x: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1200px;
+        }
+        
+        thead {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            position: sticky;
+            top: 0;
+        }
+        
+        th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:hover {
+            background-color: #f1f5f9;
+        }
+        
+        td {
+            padding: 12px 15px;
+            vertical-align: middle;
+            font-size: 0.9rem;
+        }
+        
+        .product-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .action-link {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            transition: background-color 0.2s;
+        }
+        
+        .action-link:hover {
+            background-color: rgb(173, 28, 21);
+        }
+        .animated-back-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s;
+}
+.animated-back-btn:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #5c0e0c;
+  transition: width 0.3s;
+}
+.animated-back-btn:hover {
+  color: #7e1010;
+}
+.animated-back-btn:hover:after {
+  width: 100%;
+}
+    </style>
+</head>
+<body>
+    <a href="/admin-page" class="animated-back-btn">
+        ← Вернуться
+      </a>
+    <div class="orders-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Заказа</th>
+                    <th>Оплата</th>
+                    <th>Имя</th>
+                    <th>Email</th>
+                    <th>Адрес</th>
+                    <th>Телефон</th>
+                    <th>Коментарии</th>
+                    <th>Продукт</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Картинка</th>
+                    <th>Статус</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.payment_id }}</td>
+                    <td>{{ order.customer.username }}</td>
+                    <td>{{ order.customer.email }}</td>
+                    <td>{{ order.customer_address }}</td>
+                    <td>{{ order.customer_phone }}</td>
+                    <td>{{ order.customer_comment if order.customer_comment else '-' }}</td>
+                    <td>{{ order.product.product_name }}</td>
+                    <td>${{ "%.2f"|format(order.price) }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td><img src="{{ order.product.product_picture }}" class="product-img" alt="{{ order.product.product_name }}" style="width: 50px;"></td>
+                    <td>
+                        <span class="status status-{{ order.status.lower() }}">
+                            {{ order.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <!-- Форма для обновления статуса -->
+                        <form action="{{ url_for('admin.update_order', order_id=order.id) }}" method="POST">
+                            {{ form.hidden_tag() }}
+                            {{ form.order_status(class="form-select") }}
+                            {{ form.submit(class="btn btn-sm btn-primary") }}
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

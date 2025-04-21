@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore | Cart</title>
+    <link rel="stylesheet" href="../static/style/reset.css">
+    <link rel="stylesheet" href="../static/style/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../static/style/style2.css">
+</head>
+<body>
+  
+<header>
+
+    <div class="container">
+      <div class="header">
+      <a href="/"><img src="../static/img/img1.png" alt="" style="width: 300px; padding-top: 10px;"></a>
+     
+  
+  
+      <div class="button" style="padding-top: 15px;">
+     
+        <button id="open-cart-btn">
+          {% if cart | length < 1 %}
+            <a class="nav-link text-grey" href="/cart"> Корзина
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+          {% else %}
+            <a class="nav-link text-grey" href="/cart"> Корзина
+              <i class="bi bi-{{ cart | length }}-square-fill"></i>
+            </a>
+          {% endif %}
+        </button>
+  
+        {% if current_user.is_authenticated %}
+          <div class="dropdown">
+            <button class="profile"><a class="dropdown-toggle" href="#" style="color: aliceblue;">Профиль</a></button>
+            <ul class="dropdown-menu">
+              <!-- Добавленная проверка на id=1 -->
+              {% if current_user.id == 1 %}
+                <li>
+                  <a class="dropdown-item" href="/admin-page">Админ-панель</a>
+                </li>
+              {% endif %}
+              <li>
+                <a class="dropdown-item" href="/profile/{{ current_user.id }}">Мой профиль</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/orders">Заказы</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/logout">Выйти</a>
+              </li>
+            </ul>
+          </div>
+        {% else %}
+          <button id="loginBtn"><a href="/login">Вход</a></button>
+          <button id="registerBtn"><a href="/sign-up" style="color: white;">РЕГИСТРАЦИЯ</a></button>
+        {% endif %}
+      </div>
+    </div>
+    </div>
+ 
+  </header>
+
+
+       <div class="container" style="padding-top: 60px;" >
+    <div class="category-dropdown">
+        <button class="category-button" id="category-btn"><a href="#">Категории</a></button>
+        <ul class="category-list">
+            <li><a class="category-item" href="/category/Романы">Любовные романы</a></li>
+            <li><a class="category-item" href="/category/Детективы">Детектив.Триллер</a></li>
+            <li><a class="category-item" href="/category/Приключения">Приключения</a></li>
+            <li><a class="category-item" href="/category/Психология">Психология</a></li>
+            <li><a class="category-item" href="/category/Фэнтези">Фэнтези</a></li>
+            <li><a class="category-item" href="/category/Искусство">Искусство</a></li>
+        </ul>
+    </div>
+ 
+    
+    <button class="buttons" ><a id="g" href="/popular">Новинки</a></button>
+    <button class="buttons" id="btn4"><a id="g" href="/rasp">Акции и распродажи</a></button>
+    <button class="buttons" id="btn5"><a id="g" href="/sert">Подарочные сертификаты</a></button> 
+    
+    
+  
+
+    <div class="container py-5">
+
+        
+        {% if cart %}
+        <div class="row">
+         
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        {% for item in cart %}
+                        <div class="row align-items-center mb-4" id="cart-item-{{ item.id }}">
+                            <div class="col-md-2">
+                                <img src="{{ item.product.product_picture }}" class="img-fluid cart-item-img" alt="{{ item.product.product_name }}">
+                            </div>
+                            <div class="col-md-6">
+                                <h5>{{ item.product.product_name }}</h5>
+                                <p class="text-muted">{{ item.product.category }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-flex justify-content-between align-items-center"> 
+                              
+                               
+                                    <div class="quantity-control">
+                                        <button class="btn btn-sm btn-outline-secondary plus-cart"  data-pid="{{ item.id }}">+</button>
+                                           
+                                        <span class="quantity">{{ item.quantity }}</span>
+                                        <button class="btn btn-sm btn-outline-secondary minus-cart" data-pid="{{ item.id }}">
+                                            -
+                                        </button>
+                                        <button class="btn btn-sm btn-danger remove-cart ms-3" data-pid="{{ item.id }}">
+                                            Удалить
+                                        </button>
+                                    </div>
+                                    <div class="text-end">
+                                        <h5 class="mb-0" id="item-total-{{ item.id }}">{{ "%.2f"|format(item.product.previous_price * item.quantity) }} ₽</h5>
+                                        <small class="text-muted" id="item-price-{{ item.id }}" data-price="{{ item.product.previous_price }}">
+                                            {{ "%.2f"|format(item.product.previous_price) }} ₽ за шт.
+                                        </small>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+               
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Информация о заказе</h3>
+                        <form id="order-form" action="/place-order" method="POST">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="customer_name" class="form-label">Имя*</label>
+                                    <input type="text" class="form-control" id="customer_name" name="customer_name" 
+                                           value="{{ current_user.username }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="customer_phone" class="form-label">Номер телефона*</label>
+                                    <input type="tel" class="form-control" id="customer_phone" name="customer_phone" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="customer_address" class="form-label">Адрес доставки*</label>
+                                    <textarea class="form-control" id="customer_address" name="customer_address" rows="3" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="customer_comment" class="form-label">Коментарии</label>
+                                    <textarea class="form-control" id="customer_comment" name="customer_comment" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+      
+            <div class="col-lg-4">
+                <div class="card shadow-sm summary-card">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Ваш заказ</h3>
+                        <ul class="list-group list-group-flush mb-4">
+                            {% for item in cart %}
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>{{ item.product.product_name }} (x{{ item.quantity }})</span>
+                                <span>{{ "%.2f"|format(item.product.previous_price * item.quantity) }} ₽</span>
+                            </li>
+                            {% endfor %}
+                            <li class="list-group-item d-flex justify-content-between">
+                                <strong>Сумма</strong>
+                                <strong>{{ "%.2f"|format(amount) }} ₽</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Доставка</span>
+                                <span>200.00 ₽</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <strong>Итого</strong>
+                                <strong>{{ "%.2f"|format(amount + 200) }} ₽</strong>
+                            </li>
+                        </ul>
+                        <button type="submit" form="order-form" class="btn btn-primary w-100 checkout-btn">
+                         Оформить заказ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <h3>Ваша корзина пуста</h3>
+            <a href="/" class="btn btn-primary mt-3">Вернуться к покупкам</a>
+        </div>
+        {% endif %}
+    </div>
+    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    function handleCartAction(url, id, confirmMessage = null) {
+        if (confirmMessage && !confirm(confirmMessage)) return;
+        
+        fetch(`${url}?cart_id=${id}`)
+            .then(response => {
+                if (!response.ok) throw new Error('Network error');
+                return response.json();
+            })
+            .then(data => {
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Произошла ошибка. Пожалуйста, попробуйте ещё раз.');
+            });
+    }
+
+
+    document.querySelectorAll('.plus-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            handleCartAction('/pluscart', this.dataset.pid);
+        });
+    });
+
+    document.querySelectorAll('.minus-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            handleCartAction('/minuscart', this.dataset.pid);
+        });
+    });
+
+    document.querySelectorAll('.remove-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            handleCartAction('/removecart', this.dataset.pid, 'Удалить товар из корзины?');
+        });
+    });
+});
+</script>
+</body>
+</html>

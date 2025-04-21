@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block body %}
+<header>
+
+    <div class="container">
+      <div class="header">
+      <a href="/"><img src="../static/img/img1.png" alt="" style="width: 300px; padding-top: 10px;"></a>
+      <form class="search-form" role="search" action="/search" method="POST" style="padding-top: 10px;">
+        <div class="search-container">
+          <input 
+            class="search-input" 
+            name="search" 
+            type="search" 
+            placeholder="Поиск товаров..." 
+            aria-label="Поиск"
+            required
+          >
+          <button class="search-button" type="submit"> Найти
+          </button>
+        </div>
+      </form>
+  
+  
+      <div class="button" style="padding-top: 15px;">
+     
+        <button id="open-cart-btn">
+          {% if cart | length < 1 %}
+            <a class="nav-link text-grey" href="/cart"> Корзина
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+          {% else %}
+            <a class="nav-link text-grey" href="/cart"> Корзина
+              <i class="bi bi-{{ cart | length }}-square-fill"></i>
+            </a>
+          {% endif %}
+        </button>
+  
+        {% if current_user.is_authenticated %}
+          <div class="dropdown">
+            <button class="profile"><a class="dropdown-toggle" href="#" style="color: aliceblue;">Профиль</a></button>
+            <ul class="dropdown-menu">
+              <!-- Добавленная проверка на id=1 -->
+              {% if current_user.id == 1 %}
+                <li>
+                  <a class="dropdown-item" href="/admin-page">Админ-панель</a>
+                </li>
+              {% endif %}
+              <li>
+                <a class="dropdown-item" href="/profile/{{ current_user.id }}">Мой профиль</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/orders">Заказы</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/logout">Выйти</a>
+              </li>
+            </ul>
+          </div>
+        {% else %}
+          <button id="loginBtn"><a href="/login">Вход</a></button>
+          <button id="registerBtn"><a href="/sign-up" style="color: white;">РЕГИСТРАЦИЯ</a></button>
+        {% endif %}
+      </div>
+    </div>
+    </div>
+ 
+  </header>
+ <div class="slider">
+    <div class="slides">
+        <img src="../static/img/img2.png" class="slide" alt="Image 1">
+        <img src="../static/img/img3.png" class="slide" alt="Image 2">
+        
+    </div>
+    <div class="buttonsss">
+        <button class="buttonss" onclick="prevSlide()">&#10094;</button>
+        <button class="buttonss" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="category-dropdown">
+        <button class="category-button" id="category-btn"><a href="#">Категории</a></button>
+        <ul class="category-list">
+            <li><a class="category-item" href="/category/Романы">Любовные романы</a></li>
+            <li><a class="category-item" href="/category/Детективы">Детектив.Триллер</a></li>
+            <li><a class="category-item" href="/category/Приключения">Приключения</a></li>
+            <li><a class="category-item" href="/category/Психология">Психология</a></li>
+            <li><a class="category-item" href="/category/Фэнтези">Фэнтези</a></li>
+            <li><a class="category-item" href="/category/Искусство">Искусство</a></li>
+        </ul>
+    </div>
+ 
+    <div class="category-dropdown">
+    <button class="buttons" ><a id="g" href="/popular">Новинки</a></button>
+    <button class="buttons" id="btn4"><a id="g" href="/rasp">Акции и распродажи</a></button>
+    <button class="buttons" id="btn5"><a id="g" href="/sert">Подарочные сертификаты</a></button>   </div>
+<h1>Популярное</h1>
+
+
+<div class="book">
+    {% for item in items %}
+    <div class="book1">
+        <img class="img_book" src="{{ item.product_picture }}" >
+        <p style="font-size: 15px;"> <a href="/characteristic/{{ item.id }}">{{ item.product_name }}</a></p>
+        <p style="font-size: 13px;">{{ item.author }}</p>
+             <p id="price">{{ item.previous_price}} рублей</p>
+             <p>Осталось: {{ item.in_stock }}</p>
+           <button class="btn_book"><a style="color: white;" href="/add-to-cart/{{ item.id }}">В корзину</a></button> 
+    </div>
+    {% endfor %}
+</div></div>
+<div class="footer">
+  <div class="footer-content">
+      <div class="footer-left">
+          <h3 class="footer-logo">BOOK STORE</h3>
+          <p class="footer-slogan">Заказывай книги на свой вкус</p>
+          <div class="footer-contacts">
+              <p>Если у вас появились вопросы:</p>
+              <p class="footer-phone">
+                  <i class="fas fa-phone"></i> +7 (913) 568-96-35
+              </p>
+              <p class="footer-email">
+                  <i class="fas fa-envelope"></i> info@bookstore.ru
+              </p>
+          </div>
+      </div>
+      
+      <div class="footer-right">
+          <p class="footer-description">
+              А ещё это – крупный интернет-магазин книг. В нём вы можете заказывать книги 
+              в любое время 24 часа в сутки.<br><br>
+              «BOOK STORE» – сеть книжных магазинов, успешно работающих в Новосибирске 
+              и других регионах России.
+          </p>
+          <div class="footer-social">
+              <a href="#"><i class="fab fa-vk"></i></a>
+              <a href="#"><i class="fab fa-telegram"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+      </div>
+  </div>
+  
+  <div class="footer-bottom">
+      <p style="color: white;">&copy; 2025 BOOK STORE. Все права защищены.</p>
+  </div>
+</div>
+<script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        
+        // Циклический переход между слайдами
+        if (index >= totalSlides) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = index;
+        }
+        
+        // Перемещение слайдов
+        slides.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    // Автоматическое переключение слайдов (по желанию)
+    setInterval(nextSlide, 3000); // переключение каждые 3 секунды
+
+
+
+
+</script>
+    
+
+{% endblock %}

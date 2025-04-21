@@ -1,0 +1,351 @@
+@font-face {
+    font-family: 'Monserrat';
+    src: url(../fonts/Montserrat-Light.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Monserrat-Bold';
+    src: url(../fonts/Montserrat-Bold.ttf);
+    font-weight: 400;
+}
+
+body{
+  font-family: 'Monserrat';
+  font-weight: 400;
+
+
+}
+.container {
+  width: 1440px;
+  margin: 0 auto;
+  
+}
+a{
+color:  rgba(249, 91, 82, 1);
+text-decoration: none;
+}
+
+#a{
+  color: #ffffff;
+  background:rgba(249, 91, 82, 1);
+  width: 250px;
+}
+.btn{
+display: flex;
+justify-content: space-between;
+padding-top: 30px;
+
+
+}
+
+input{
+  width: 400px;
+  height: 16px;
+  margin-top: 10px;
+  
+}
+#btn1{
+
+   border: 1px solid rgba(249, 91, 82, 1);
+border-radius: 10px;
+width: 179px;
+height: 37px;
+
+font-weight: 300;
+font-size: 26px;
+letter-spacing: 0.01em;
+text-transform: uppercase;
+color: #ffffff;
+background-color: transparent;
+cursor: pointer;
+
+}
+
+
+
+#b{
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+
+#b:hover, .dropdown:hover .buttons {
+  background-color:rgba(249, 91, 82, 1);
+  border-color: rgba(249, 91, 82, 1);
+  color: #000000;
+}
+
+.i:hover, .dropdown:hover .buttons{
+  color: #000000;
+}
+
+.buttons:hover{
+  border-color: rgba(249, 91, 82, 1);
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content #b {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 24px;
+}
+.dropdown-content #b:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#btn2{
+
+   border-color: #fff;
+border-radius: 10px;
+width: 252px;
+height: 37px;
+background: rgba(249, 91, 82, 1);
+font-family: var(--font-family);
+font-weight: 300;
+font-size: 24px;
+text-transform: uppercase;
+color: #ffffff;
+cursor: pointer;
+
+}
+.buttons{
+
+
+
+   border: 1px solid #fff;
+  margin-left: 70px;
+  margin-top: 40px;
+  font-family: 'Monserrat-Bold';
+font-weight: 400;
+font-size: 20px;
+
+border-radius: 10px;
+width: 198px;
+height: 57px;
+background:rgb(255, 255, 255);
+}
+
+#btn4{
+  width: 300px;
+height: 57px;
+}
+#btn5{
+  width: 374px;
+height: 57px;
+}
+h3{
+    margin-top: 50px;
+    margin-left: 60px;
+
+font-weight: 400;
+font-size: 40px;
+color: #000;
+}
+
+
+.content_img{
+  width: 500px;
+  padding-left: 100px;
+  padding-top: 35px;
+}
+
+
+.footer{
+  
+
+  display: block;
+margin-top: 190px;
+  height: 1px;
+  width: 80%;
+  background-color: #d3d3d3;
+
+ 
+
+  position: absolute;
+font-size: 16px;
+line-height: 122%;
+letter-spacing: 0.04em;
+color: #000;
+}
+
+
+#fot2{
+ 
+  margin-top: 230px;
+  margin-left: 800px;
+
+}
+
+
+
+#fot{
+   
+  margin-left: 100px;
+  padding-top: 20px;
+
+
+}
+
+h5{
+  font-size: 25px;
+  padding-left: 100px;
+  padding-top: 25px;
+}
+
+
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+.modal-content {
+  background-color: white;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 350px; 
+  height: 200px;
+  border-radius: 10px;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.form-group {
+  margin: 10px 0;
+}
+input[type="text"], input[type="password"] {
+  width: 330px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+input[type="submit"] {
+  background-color: rgba(249, 91, 82, 1);
+  color: white;
+  border: none;
+   height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+.btn{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  
+  
+  }
+  
+  input{
+      width: 400px;
+      height: 16px;
+      margin-top: 10px;
+      
+  }
+  
+  .search-input {
+      width: 100%;
+      padding: 10px 40px 10px 40px; /* Отступы для текста и иконки */
+      border: 2px solid rgba(249, 91, 82, 1); /* Цвет рамки */
+      border-radius: 25px; /* Скругление углов */
+      font-size: 16px; /* Размер шрифта */
+      outline: none; /* Убираем обводку */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+      transition: border-color 0.3s; /* Плавный переход цвета рамки */
+  }
+  .search-input:focus {
+      border-color: rgb(153, 60, 53); /* Цвет рамки при фокусе */
+  }
+  .search-icon {
+      position: absolute;
+      padding-left: 310px;
+      padding-top: 15px;
+  
+   /* Центрирование иконки по вертикали */
+      width: 30px; /* Размер иконки */
+  }
+  
+  
+  #loginBtn{
+      padding-top: 13px;
+   padding-left: 150px;
+      border: 1px solid #fff;
+  border-radius: 10px;
+  width: 179px;
+  height: 37px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #000000;
+  background-color: transparent;
+  cursor: pointer;
+  }
+  
+  #registerBtn{
+      margin-top: 10px;
+      border: 1px solid rgba(249, 91, 82, 1);
+  border-radius: 10px;
+  width: 252px;
+  height: 37px;
+  background: rgba(249, 91, 82, 1);
+  
+  font-weight: 300;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+  }
+  

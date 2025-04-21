@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+           
+        }
+        
+        .dashboard-container {
+            width: 100%;
+            max-width: 1440px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .dashboard-table thead {
+            background: rgb(247, 108, 101);
+            color: white;
+        }
+        
+        .dashboard-table th {
+            padding: 18px 24px;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .dashboard-table tbody tr {
+            border-bottom: 1px solid #eaeef5;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        
+        .dashboard-table tbody tr:hover {
+            background-color: #f8f9fe;
+        }
+        
+        .dashboard-table td {
+            padding: 16px 24px;
+        }
+        
+        .dashboard-table a {
+            display: inline-block;
+            padding: 10px 16px;
+            color: #4a5568;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .dashboard-table a:hover {
+            color: #2d3748;
+            background-color: #edf2f7;
+            transform: translateY(-2px);
+        }
+        
+
+        .dashboard-table a::before {
+            margin-right: 8px;
+            color: #6e8efb;
+        }
+        
+        .animated-back-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s;
+}
+
+    </style>
+</head>
+<body>
+    <a href="/" class="animated-back-btn">
+        ← Вернуться
+      </a>
+    <div class="dashboard-container">
+        <table class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>Клиенты</th>
+                    <th>Товары из магазина</th>
+                    <th>Добавление товаров в магазин</th>
+                    <th>Просмотр Заказов</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <tr>
+                    <td><a href="/customers">Управление клиентами</a></td>
+                    <td><a href="/shop-items">Товары</a></td>
+                    <td><a href="/add-shop-items">Добавление товара</a></td>
+                    <td><a href="/view-orders">Заказы</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
